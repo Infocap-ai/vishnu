@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #060750;
+        }
+        
+        .container {
+            display: flex;
+            width: 900px;
+            height: 500px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+        }
+        
+        .left-panel {
+            width: 50%;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .left-panel h2 {
+            color: #060750;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .input-box {
+            position: relative;
+            margin-bottom: 20px;
+        }
+        
+        .input-box input {
+            width: 100%;
+            padding: 12px 40px 12px 12px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+        
+        .forgot-password {
+            text-align: right;
+            font-size: 12px;
+            margin-bottom: 15px;
+        }
+        
+        .forgot-password a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        
+        .forgot-password a:hover {
+            text-decoration: underline;
+        }
+        
+        .login-btn,
+        .google-btn {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        
+        .login-btn {
+            background: #007bff;
+            color: white;
+        }
+        
+        .login-btn:hover {
+            background: #0056b3;
+        }
+        
+        .google-btn {
+            background: #db4437;
+            color: white;
+        }
+        
+        .google-btn:hover {
+            background: #c1351d;
+        }
+        
+        .signup-link {
+            text-align: center;
+            margin-top: 10px;
+            font-size: 14px;
+        }
+        
+        .signup-link a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        
+        .signup-link a:hover {
+            text-decoration: underline;
+        }
+        
+        .right-panel {
+            width: 50%;
+            background: #add8e6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .right-panel h1 {
+            font-size: 24px;
+            color: #060750;
+        }
+        
+        .right-panel img {
+            width: 100%;
+            max-width: 300px;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                width: 90%;
+                height: auto;
+            }
+            .left-panel,
+            .right-panel {
+                width: 100%;
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- Left Panel - Login Form -->
+        <div class="left-panel">
+            <h2>Login</h2>
+            <form action="/login" method="POST">
+                <div class="input-box">
+                    <input type="email" name="email" placeholder="Enter your email" required>
+                </div>
+                <div class="input-box">
+                    <input type="password" name="password" id="password" placeholder="Enter your password" required>
+                </div>
+                <div class="forgot-password">
+                    <a href="/forgot_password">Forgot password?</a>
+                </div>
+                <button type="submit" class="login-btn">Login</button>
+            </form>
+            <button class="google-btn" onclick="window.location.href='/auth/google'">Sign in with Google</button>
+            <div class="signup-link">
+                Don't have an account? <a href="/signup">Sign up</a>
+            </div>
+        </div>
+
+        <!-- Right Panel - Welcome Message -->
+        <div class="right-panel">
+            <div>
+                <h1>Hello, Welcome!</h1>
+                <img src="/static/stocks-image.png" alt="Stock Trading Illustration">
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

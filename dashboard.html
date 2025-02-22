@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7fc;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        
+        .dashboard-container {
+            background-color: #fff;
+            width: 500px;
+            padding: 40px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            text-align: center;
+        }
+        
+        h1 {
+            font-size: 2em;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        
+        .welcome-msg {
+            font-size: 1.2em;
+            color: #5c6bc0;
+            font-weight: bold;
+        }
+        
+        .action-btns {
+            margin-top: 30px;
+        }
+        
+        .action-btn {
+            background-color: #007bff;
+            color: white;
+            padding: 12px 30px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 220px;
+            margin: 10px;
+        }
+        
+        .action-btn:hover {
+            background-color: #0056b3;
+        }
+        
+        .logout-btn {
+            background-color: #dc3545;
+            width: 100px;
+            margin-top: 20px;
+        }
+        
+        .logout-btn:hover {
+            background-color: #c82333;
+        }
+        
+        .verification {
+            margin-top: 20px;
+            font-size: 1.2em;
+            color: #333;
+        }
+        
+        select {
+            margin-left: 10px;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        
+        .done-btn {
+            background-color: #28a745;
+            color: white;
+            padding: 10px 30px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        
+        .done-btn:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="dashboard-container">
+        <h1>Welcome to Your Dashboard</h1>
+        <div class="welcome-msg">
+            Welcome, {{ username }}!
+        </div>
+
+        <div class="action-btns">
+            <button class="action-btn" onclick="window.location.href='{{ url_for('form') }}'">Fill Out Form</button>
+            <button class="action-btn" onclick="window.location.href='{{ url_for('settings') }}'">Settings</button>
+            <a href="{{ url_for('logout') }}">
+                <button class="action-btn logout-btn">Logout</button>
+            </a>
+        </div>
+
+        {% if user_stock_data %}
+        <p>Your stock data has been successfully submitted. You can <a href="{{ url_for('settings') }}">edit it here</a>.</p>
+        {% else %}
+        <p>You haven't filled in your stock data yet. Please <a href="{{ url_for('form') }}">fill out the form</a> now.</p>
+        {% endif %}
+
+        <div class="verification">
+            <p>Shall we run the software for your verification today?</p>
+            <form action="{{ url_for('submit_verification') }}" method="post">
+                <select name="verification_choice">
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                </select>
+                <button type="submit" class="submit-btn">Done</button>
+            </form>
+        </div>
+
+    </div>
+
+</body>
+
+</html>

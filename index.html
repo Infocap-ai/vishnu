@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trading Strategy Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+        
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 2em;
+            font-weight: bold;
+            color: #007BFF;
+        }
+        
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            font-size: 1.1em;
+        }
+        
+        input,
+        select,
+        button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            border: 1px solid #ced4da;
+            font-size: 1em;
+        }
+        
+        .btn {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+        
+        .btn:hover {
+            background-color: #0056b3;
+            transform: translateY(-3px);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Trading Strategy Form</h2>
+        <form action="/submit" method="POST">
+            <label>API Key:</label>
+            <input type="text" name="apiKey" required>
+            <label>Select Strategy:</label>
+            <select name="strategy" required>
+        <option value="">Select</option>
+        <option value="str1">STR1 - Momentum-based intraday trading</option>
+        <option value="str2">STR2 - Mean-reversion swing trading</option>
+      </select>
+            <label>Entry Time:</label>
+            <input type="time" name="entryTime" required>
+            <label>Exit Time:</label>
+            <input type="time" name="exitTime" required>
+            <label>Premium:</label>
+            <input type="number" name="premium" required>
+            <label>Target %:</label>
+            <input type="number" name="target" required>
+            <label>Stoploss %:</label>
+            <input type="number" name="stoploss" required>
+            <label>Instrument:</label>
+            <select name="instrument" required>
+        <option value="nifty50">NIFTY50</option>
+        <option value="banknifty">BANKNIFTY</option>
+      </select>
+            <label>Sheet Strike:</label>
+            <input type="text" name="sheetStrike" required>
+            <label>Quantity:</label>
+            <input type="number" name="quantity" required>
+            <button class="btn" type="submit">Submit</button>
+        </form>
+    </div>
+</body>
+
+</html>
